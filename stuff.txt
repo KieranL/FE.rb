@@ -1,0 +1,2 @@
+map tiles are 64x64px
+cursor is 80x80px
