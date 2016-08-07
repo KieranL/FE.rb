@@ -1,11 +1,13 @@
 require_relative 'unit_stats'
 require_relative 'inventory'
 require_relative 'Modules/map_item'
-require_relative '../src/Constants/stat_constants'
+require_relative 'Constants/stat_constants'
+require_relative 'animation'
 
 class Unit
   include MapItem
-  def initialize
+  def initialize(window)
+    @window = window
     @stats = UnitStats.new
     @growths = UnitStats.new
     @caps = UnitStats.new
@@ -13,8 +15,9 @@ class Unit
     @level = 0
     @exp = 0
     @portrait = nil
-    @map_sprite = nil
+    @map_sprite = Animation.new(1000, Gosu::Image::load_tiles('media\hero.png', 256, 256))
     level_up
+    move(0, 5)
   end
 
   def add_exp (exp)
@@ -27,17 +30,17 @@ class Unit
   end
 
   def level_up
-    level_up_stat_2(:hp)
-    level_up_stat_2(:str)
-    level_up_stat_2(:mag)
-    level_up_stat_2(:skl)
-    level_up_stat_2(:spd)
-    level_up_stat_2(:lck)
-    level_up_stat_2(:def)
-    level_up_stat_2(:res)
+    level_up_stat(:hp)
+    level_up_stat(:str)
+    level_up_stat(:mag)
+    level_up_stat(:skl)
+    level_up_stat(:spd)
+    level_up_stat(:lck)
+    level_up_stat(:def)
+    level_up_stat(:res)
   end
 
-  def level_up_stat_2(stat)
+  def level_up_stat(stat)
     new_value = @stats[stat] + @growths[stat] / 100
 
     if rand(100) <= @growths[stat]
@@ -49,5 +52,9 @@ class Unit
     end
 
     @stats[stat] = new_value
+  end
+
+  def draw
+    @map_sprite.draw(x_draw_pos, y_draw_pos, DrawingZ::UNITS)
   end
 end

@@ -1,5 +1,4 @@
 require 'gosu'
-require_relative 'player'
 require_relative 'animation'
 require_relative 'menu'
 require_relative 'menu_item'
@@ -8,7 +7,7 @@ require_relative '../src/cursor'
 
 class RubyEmblemWindow < Gosu::Window
   def initialize
-    super Gosu::screen_width, Gosu::screen_height, true
+    super Settings.get(:screen_width), Settings.get(:screen_height), Settings.get(:fullscreen)
     @caption = 'Hello World!'
     #@song = Gosu::Song.new('media\music\Fire_Emblem_Theme.wav')
     #@song.play(true)
@@ -24,10 +23,10 @@ class RubyEmblemWindow < Gosu::Window
   def draw
     scale(1) do
 
-      @chapter.draw_map
-      fps = Gosu::fps
+        @chapter.draw_map
 
-      Gosu::Image::from_text(self, fps, 'Arial', 32).draw(0, 0, 10, 1, 1, Gosu::Color.new(0xffffffff))
+        Gosu::Image::from_text(self, Gosu::fps, 'Arial', 32).draw(0, 0, 10, 1, 1, Gosu::Color.new(0xffffffff))
+
     end
   end
 

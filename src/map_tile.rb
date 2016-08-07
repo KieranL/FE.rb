@@ -10,6 +10,6 @@ class MapTile
   end
 
   def draw
-    @icon.get_frame.draw(x_draw_pos, y_draw_pos, DrawingZ::MAP)
+    @icon.draw(x_draw_pos, y_draw_pos, DrawingZ::MAP)
   end
 end

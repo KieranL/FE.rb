@@ -12,4 +12,8 @@ class Animation
   def get_frame
     @frames[Gosu::milliseconds / @interval % @frames.size]
   end
+
+  def draw(x, y, z)
+    get_frame.draw(x, y, z)
+  end
 end

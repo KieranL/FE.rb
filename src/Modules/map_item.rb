@@ -4,7 +4,7 @@ module MapItem
   @x_pos = 0
   @y_pos = 0
 
-  def move(x , y )
+  def move(x, y)
     @x_pos = x
     @y_pos = y
   end

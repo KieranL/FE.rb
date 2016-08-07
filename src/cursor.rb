@@ -6,7 +6,7 @@ class Cursor
   include MapItem
   def initialize(chapter)
     @chapter = chapter
-    move(0, 0)
+    move(@chapter.map.width / 2, @chapter.map.height / 2)
     img1 = Gosu::Image.new(@chapter.window, 'media\cursor.png', true)
     img2 = Gosu::Image.new(@chapter.window, 'media\cursor2.png', true)
     @icon = Animation.new(1000, img1, img2)
@@ -32,7 +32,7 @@ class Cursor
   end
 
   def move_left(pressed)
-    @is_moving_left  = pressed
+    @is_moving_left = pressed
     if pressed && x_pos > 0
       @x_pos -= 1
     end

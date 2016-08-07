@@ -2,6 +2,7 @@ require_relative 'Constants/drawing_z'
 require_relative 'Modules/map_item'
 require_relative 'animation'
 require_relative 'map_tile'
+require_relative 'settings'
 
 class Map
   attr_reader :width, :height
@@ -9,8 +10,8 @@ class Map
     @chapter = chapter
 
     @background_image = Animation.new(1000, Gosu::Image.new(@chapter.window, 'media\grass.png', true))
-    @width = 29 #29
-    @height = 16 #16
+    @width = 60 #29
+    @height = 24 #16
     @tiles = Hash.new
 
     0.upto(@width) do |x|
