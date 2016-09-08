@@ -9,7 +9,7 @@ class Map
   def initialize(chapter)
     @chapter = chapter
 
-    @background_image = Animation.new(1000, Gosu::Image.new(@chapter.window, 'media\grass.png', true))
+    @background_image = Animation.new(1000, Gosu::Image.new(@chapter.window, File.expand_path('..\media\grass.png', Settings.get(:src_dir)), true))
     @width = 60 #29
     @height = 24 #16
     @tiles = Hash.new

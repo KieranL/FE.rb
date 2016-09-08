@@ -15,7 +15,7 @@ class Unit
     @level = 0
     @exp = 0
     @portrait = nil
-    @map_sprite = Animation.new(1000, Gosu::Image::load_tiles('media\hero.png', 256, 256))
+    @map_sprite = Animation.new(1000, Gosu::Image::load_tiles(File.expand_path('..\media\hero.png', Settings.get(:src_dir)), 256, 256))
     level_up
     move(0, 5)
   end

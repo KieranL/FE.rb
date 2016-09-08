@@ -8,7 +8,7 @@ require_relative '../src/cursor'
 class RubyEmblemWindow < Gosu::Window
   def initialize
     super Settings.get(:screen_width), Settings.get(:screen_height), Settings.get(:fullscreen)
-    @caption = 'Hello World!'
+    @caption = Settings.get(:window_title)
     #@song = Gosu::Song.new('media\music\Fire_Emblem_Theme.wav')
     #@song.play(true)
     @chapter = Chapter.new(self)
@@ -36,7 +36,7 @@ class RubyEmblemWindow < Gosu::Window
 
   def button_down(id)
     case id
-      when Gosu::KbEscape
+    when Gosu::KbEscape
         close
     end
   end

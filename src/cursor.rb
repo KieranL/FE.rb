@@ -7,8 +7,8 @@ class Cursor
   def initialize(chapter)
     @chapter = chapter
     move(@chapter.map.width / 2, @chapter.map.height / 2)
-    img1 = Gosu::Image.new(@chapter.window, 'media\cursor.png', true)
-    img2 = Gosu::Image.new(@chapter.window, 'media\cursor2.png', true)
+    img1 = Gosu::Image.new(@chapter.window, File.expand_path('..\media\cursor.png', Settings.get(:src_dir)), true)
+    img2 = Gosu::Image.new(@chapter.window, File.expand_path('..\media\cursor2.png', Settings.get(:src_dir)), true)
     @icon = Animation.new(1000, img1, img2)
   end
 
