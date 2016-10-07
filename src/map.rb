@@ -6,12 +6,12 @@ require_relative 'settings'
 
 class Map
   attr_reader :width, :height
-  def initialize(chapter)
+  def initialize(chapter, width = 20, height = 20)
     @chapter = chapter
 
     @background_image = Animation.new(1000, Gosu::Image.new(@chapter.window, File.expand_path('..\media\grass.png', Settings.get(:src_dir)), true))
-    @width = 60 #29
-    @height = 24 #16
+    @width = width #29
+    @height = height #16
     @tiles = Hash.new
 
     0.upto(@width) do |x|
@@ -19,6 +19,15 @@ class Map
         @tiles[[x, y]] = MapTile.new(x, y, @background_image)
       end
     end
+  end
+
+  def self.init_from_json(chapter, json_file)
+    parameters = JSON.parse(json_file, :symbolize_names => true)
+
+    width = parameters[:width]
+    height = parameters[:height]
+
+    Map.new(chapter, width, height)
   end
 
   def draw

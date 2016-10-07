@@ -3,21 +3,31 @@ require_relative 'inventory'
 require_relative 'Modules/map_item'
 require_relative 'Constants/stat_constants'
 require_relative 'animation'
+require_relative 'weapon'
 
 class Unit
+  attr_reader :inventory
   include MapItem
-  def initialize(window)
-    @window = window
-    @stats = UnitStats.new
-    @growths = UnitStats.new
-    @caps = UnitStats.new
-    @inventory = Inventory.new
-    @level = 0
-    @exp = 0
-    @portrait = nil
-    @map_sprite = Animation.new(1000, Gosu::Image::load_tiles(File.expand_path('..\media\hero.png', Settings.get(:src_dir)), 256, 256))
-    level_up
-    move(0, 5)
+  def initialize(stats, growths, caps, inv, level, exp, portrait, map_sprite, x = 0, y = 0)
+    @stats = stats
+    @growths = growths
+    @caps = caps
+    @inventory = inv
+    @level = level
+    @exp = exp
+    @portrait = portrait
+    @map_sprite = map_sprite
+    move(x, y)
+  end
+
+  def self.init_from_json(json_file)
+    parameters = JSON.parse(json_file, :symbolize_names => true)
+    map_sprite = Animation.new(1000, Gosu::Image::load_tiles(File.expand_path('..\media\hero.png', Settings.get(:src_dir)), 256, 256))
+    stats = UnitStats.init_from_hash(parameters[:stats])
+    caps = UnitStats.init_from_hash(parameters[:caps])
+    growths = UnitStats.init_from_hash(parameters[:growths])
+
+    Unit.new(stats, caps, growths, Inventory.new, parameters[:level], parameters[:exp], nil, map_sprite, parameters[:x], parameters[:y])
   end
 
   def add_exp (exp)

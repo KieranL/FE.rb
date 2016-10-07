@@ -26,5 +26,5 @@ class Settings
       window_title: 'FE.rb',
       src_dir: if ENV['OCRA_EXECUTABLE'] then File.dirname(ENV['OCRA_EXECUTABLE']) else File.dirname(__FILE__) end
 
-      }.freeze
+      }
 end

@@ -5,6 +5,14 @@ class UnitStats
     @stats = {hp: hp, str: str, mag: mag, skl: skl, spd: spd, lck: lck, def: defn, res: res, con: con, mov: mov}
   end
 
+  def self.init_from_json(json_file)
+    init_from_hash(JSON.parse(json_file, :symbolize_names => true))
+  end
+
+  def self.init_from_hash(hash)
+    UnitStats.new(hash[:hp], hash[:str], hash[:mag], hash[:skl], hash[:spd], hash[:lck], hash[:def], hash[:res], hash[:con], hash[:mov])
+  end
+
   def [](stat)
     stats[stat]
   end

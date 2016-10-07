@@ -6,12 +6,12 @@ class Chapter
   attr_reader :window, :map, :cursor
   def initialize (window)
     @window = window
-    @map = Map.new(self)
+    @map = Map.init_from_json(self, File.read(File.expand_path('map_config.json', Settings.get(:src_dir))))
     @cursor = Cursor.new(self)
     @controller = Controller.new(self)
     @units = []
-    @units << Unit.new(window)
 
+    @units << Unit.init_from_json(File.read(File.expand_path('unit_config.json', Settings.get(:src_dir))))
     puts @viewable_width = (window.width / MapItem::TILE_SIZE).floor
     puts @viewable_height = (window.height / MapItem::TILE_SIZE).floor
   end
