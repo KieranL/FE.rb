@@ -1,0 +1,42 @@
+{
+  "level": 1,
+  "exp": 33,
+  "x": 2,
+  "y": 5,
+  "stats": {
+    "hp": 31,
+    "str": 1,
+    "mag": 2,
+    "skl": 3,
+    "spd": 4,
+    "lck": 5,
+    "def": 6,
+    "res": 7,
+    "con": 8,
+    "mov": 9
+  },
+  "caps": {
+    "hp": 31,
+    "str": 1,
+    "mag": 2,
+    "skl": 3,
+    "spd": 4,
+    "lck": 5,
+    "def": 6,
+    "res": 7,
+    "con": 8,
+    "mov": 9
+  },
+  "growths": {
+    "hp": 31,
+    "str": 1,
+    "mag": 2,
+    "skl": 3,
+    "spd": 4,
+    "lck": 5,
+    "def": 6,
+    "res": 7,
+    "con": 8,
+    "mov": 9
+  }
+}
