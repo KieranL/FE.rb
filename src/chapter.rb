@@ -1,7 +1,7 @@
 require_relative 'map'
-require_relative '../src/controller'
-require_relative '../src/Modules/map_item'
-require_relative '../src/unit'
+require_relative 'controller'
+require_relative 'Modules/map_item'
+require_relative 'unit'
 class Chapter
   attr_reader :window, :map, :cursor
   def initialize (window)

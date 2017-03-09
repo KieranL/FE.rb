@@ -14,7 +14,6 @@ class Menu
     @row_height = 32
     @padding = 4
     @selected_index = 0
-    #@menu.add_item(Gosu::Image::from_text(self, 'item 1', 'Arial', 32), -> { puts 'something1' })
   end
 
   def add_item (image, callback, hover_image = nil)
